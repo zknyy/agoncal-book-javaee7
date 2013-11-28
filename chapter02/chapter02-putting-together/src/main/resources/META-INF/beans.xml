@@ -3,6 +3,13 @@
        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
        version="1.1" bean-discovery-mode="all">
 
+    <!--
+    When executing test(configed in the file of beans.xml in test folder), 
+    the object of MockGenerator will be generated instand of the origin one. 
+    <alternatives>
+        <class>org.agoncal.book.javaee7.chapter02.MockGenerator</class>
+    </alternatives>
+    -->
     <interceptors>
         <class>org.agoncal.book.javaee7.chapter02.LoggingInterceptor</class>
     </interceptors>

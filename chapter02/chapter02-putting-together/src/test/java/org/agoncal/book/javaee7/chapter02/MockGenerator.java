@@ -28,7 +28,7 @@ public class MockGenerator implements NumberGenerator {
     // =          Business methods          =
     // ======================================
 
-    @Loggable
+//  @Loggable //<-- the Loggable here is nosence and useless.
     public String generateNumber() {
     String mock = "MOCK-" + Math.abs(new Random().nextInt());
     logger.info("Generated Mock : " + mock);

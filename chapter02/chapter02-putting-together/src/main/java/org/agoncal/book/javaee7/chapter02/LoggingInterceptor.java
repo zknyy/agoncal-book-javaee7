@@ -15,14 +15,14 @@ import java.util.logging.Logger;
  *         --
  */
 @Interceptor
-@Loggable
+@Loggable //<-- if there is no Loggable, it throws an exception
 public class LoggingInterceptor {
 
     // ======================================
     // =             Attributes             =
     // ======================================
 
-    @Inject
+    @Inject //the object will be created in class LoggingProducer
     private Logger logger;
 
     // ======================================
@@ -35,7 +35,7 @@ public class LoggingInterceptor {
         try {
             return ic.proceed();
         } finally {
-            logger.exiting(ic.getTarget().getClass().getName(), ic.getMethod().getName());
+            logger.exiting("Finally--> "+ic.getTarget().getClass().getName(), ic.getMethod().getName());
         }
     }
 }

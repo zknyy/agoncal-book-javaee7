@@ -25,7 +25,7 @@ public class IsbnGenerator implements NumberGenerator {
   // =          Business methods          =
   // ======================================
 
-  @Loggable
+//  @Loggable //<-- the Loggable here is nosence and useless.
   public String generateNumber() {
     String isbn = "13-84356-" + Math.abs(new Random().nextInt());
     logger.info("Generated ISBN : " + isbn);

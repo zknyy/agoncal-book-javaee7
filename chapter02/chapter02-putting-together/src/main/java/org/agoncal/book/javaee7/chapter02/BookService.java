@@ -9,16 +9,18 @@ import javax.inject.Inject;
  *         http://www.antoniogoncalves.org
  *         --
  */
-@Loggable
+//@Loggable //<-- the Loggable here is nosence and useless.
 public class BookService {
 
   // ======================================
   // =             Attributes             =
   // ======================================
-
-  @Inject
-  @ThirteenDigits
-  private NumberGenerator numberGenerator;
+    
+    @Inject
+    @ThirteenDigits
+    //the key is here, it use the object of Generator with 
+    //@ThirteenDigits but @EightDigits
+    private NumberGenerator numberGenerator;
 
   // ======================================
   // =          Business methods          =
