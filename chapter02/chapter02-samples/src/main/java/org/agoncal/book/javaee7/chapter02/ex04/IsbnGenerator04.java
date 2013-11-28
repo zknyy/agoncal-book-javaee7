@@ -10,6 +10,8 @@ import java.util.Random;
  *         http://www.antoniogoncalves.org
  *         --
  */
+//-->if there is only one implemented class, it is not necessary to specify it.
+//--> no need for @Produces
 public class IsbnGenerator04 implements NumberGenerator04 {
 
   // ======================================

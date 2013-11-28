@@ -15,7 +15,7 @@ public class BookService04 {
   // =             Attributes             =
   // ======================================
 
-  @Inject
+  @Inject//-->if there is only one implemented class, it is not necessary to specify it.
   private NumberGenerator04 numberGenerator;
 
   // ======================================

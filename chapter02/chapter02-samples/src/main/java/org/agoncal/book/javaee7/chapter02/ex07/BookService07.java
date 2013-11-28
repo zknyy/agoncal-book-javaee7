@@ -16,7 +16,7 @@ public class BookService07 {
   // ======================================
 
   @Inject
-  @ThirteenDigits07
+  @ThirteenDigits07 //--> Use the specified annotation to get the object of different implementation
   private NumberGenerator07 numberGenerator;
 
   // ======================================

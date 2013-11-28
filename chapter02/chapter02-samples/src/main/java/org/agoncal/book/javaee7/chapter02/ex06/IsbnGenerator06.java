@@ -11,7 +11,7 @@ import java.util.Random;
  *         http://www.antoniogoncalves.org
  *         --
  */
-@Default
+@Default //-->it could be deleted, as there is only one implemented class
 public class IsbnGenerator06 implements NumberGenerator06 {
 
   // ======================================

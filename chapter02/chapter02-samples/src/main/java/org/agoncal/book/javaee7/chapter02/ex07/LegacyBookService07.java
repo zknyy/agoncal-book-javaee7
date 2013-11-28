@@ -16,7 +16,7 @@ public class LegacyBookService07 {
   // ======================================
 
   @Inject
-  @EightDigits07
+  @EightDigits07    //--> Use the specified annotation to get the object of different implementation
   private NumberGenerator07 numberGenerator;
 
   // ======================================

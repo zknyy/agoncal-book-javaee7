@@ -21,7 +21,7 @@ public class BookService01 {
   // =             Attributes             =
   // ======================================
 
-  @Inject
+  @Inject   //-->this interface has no implemented class
   private NumberGenerator01 numberGenerator;
   @Inject
   private EntityManager em;

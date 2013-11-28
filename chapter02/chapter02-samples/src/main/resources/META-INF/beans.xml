@@ -3,10 +3,11 @@
        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
        version="1.1" bean-discovery-mode="all">
 
+  <!-- using a Mock class to instand of the default one -->
   <alternatives>
     <class>org.agoncal.book.javaee7.chapter02.ex14.MockGenerator14</class>
-  </alternatives>
-
+  </alternatives>    
+    
   <interceptors>
     <class>org.agoncal.book.javaee7.chapter02.ex29.LoggingInterceptor29</class>
     <class>org.agoncal.book.javaee7.chapter02.ex33.LoggingInterceptor33</class>

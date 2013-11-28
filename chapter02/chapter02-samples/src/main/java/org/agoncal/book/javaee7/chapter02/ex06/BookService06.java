@@ -17,7 +17,7 @@ public class BookService06 {
   // ======================================
 
   @Inject
-  @Default
+  @Default //-->it could be deleted, as there is only one implemented class
   private NumberGenerator06 numberGenerator;
 
   // ======================================
