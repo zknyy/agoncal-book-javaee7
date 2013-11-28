@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 
 import static org.junit.Assert.assertTrue;
 
@@ -48,15 +49,26 @@ public class DerbyPingService19IT {
 
   @Test
   public void shouldPingDatabase() throws Exception {
+    System.out.println("--->>> step a");
     Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
+    System.out.println("--->>> step b");
     Connection conn = DriverManager.getConnection("jdbc:derby:memory:chapter02DB;create=true", "APP2", "APP");
-    conn.createStatement().executeQuery("SELECT 1 FROM SYSIBM.SYSDUMMY1");
+    System.out.println("--->>> step c");
+//    conn.createStatement().executeQuery("SELECT 1 FROM SYSIBM.SYSDUMMY1");
+    ResultSet rs = conn.createStatement().executeQuery("SELECT 1 FROM SYSIBM.SYSDUMMY1");
+    System.out.println("--->>> step d");
+    rs.next();
+    System.out.println("--->>> step e");
+    System.out.println("--->>> SELECT 1 FROM SYSIBM.SYSDUMMY1:"+rs.getString(1));
     conn.close();
   }
 
   @Test
   public void shouldPingDatabaseWithDispose() throws Exception {
+    System.out.println("--->>> step 1");
     DerbyPingService19 pingService = container.instance().select(DerbyPingService19.class).get();
+    System.out.println("--->>> step 2");
     pingService.ping();
+    System.out.println("--->>> step 8");
   }
 }
