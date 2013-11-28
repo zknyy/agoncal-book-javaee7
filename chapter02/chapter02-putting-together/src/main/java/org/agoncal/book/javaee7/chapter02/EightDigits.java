@@ -17,6 +17,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  */
 @Qualifier
 @Retention(RUNTIME)
-@Target({FIELD, TYPE, METHOD})
+@Target({FIELD, TYPE, METHOD, PARAMETER})
 public @interface EightDigits {
 }
