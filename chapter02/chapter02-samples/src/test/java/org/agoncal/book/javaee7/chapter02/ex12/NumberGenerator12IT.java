@@ -46,7 +46,27 @@ public class NumberGenerator12IT {
   // ======================================
   // =              Methods               =
   // ======================================
-
+  
+  @Test
+  public void shouldCheckNumberIsThirteenDigitsOdd() {
+    BookOddService12 bookService = container.instance().select(BookOddService12.class).get();
+    Book12 book = bookService.createBook("H2G2", 12.5f, "Geeky scifi Book");
+    assertTrue(book.getIsbn().startsWith("131"));
+  }
+  @Test
+  public void shouldCheckNumberIsThirteenDigitsEven() {
+    BookEvenService12 bookService = container.instance().select(BookEvenService12.class).get();
+    Book12 book = bookService.createBook("H2G2", 12.5f, "Geeky scifi Book");
+    assertTrue(book.getIsbn().startsWith("132"));
+  }
+  
+  @Test
+  public void shouldCheckNumberIsEightDigits() {
+    LegacyBookService12 bookService = container.instance().select(LegacyBookService12.class).get();
+    Book12 book = bookService.createBook("H2G2", 12.5f, "Geeky scifi Book");
+    assertTrue(book.getIsbn().startsWith("8"));
+  }
+/*
   @Test
   public void shouldCheckNumberIsThirteenDigitsOdd() {
     BookOddService10 bookService = container.instance().select(BookOddService10.class).get();
@@ -66,5 +86,5 @@ public class NumberGenerator12IT {
     LegacyBookService10 bookService = container.instance().select(LegacyBookService10.class).get();
     Book10 book = bookService.createBook("H2G2", 12.5f, "Geeky scifi Book");
     assertTrue(book.getIsbn().startsWith("8"));
-  }
+  }*/
 }
