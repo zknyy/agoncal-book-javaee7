@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import java.util.Date;
+import javax.interceptor.Interceptors;
 
 import static javax.persistence.TemporalType.DATE;
 
@@ -34,6 +35,8 @@ public class Customer25 {
   // =            Constructors            =
   // ======================================
 
+  //why the "Interceptors" here cannot work(--it seems it be avoided)???
+  @Interceptors(LoggingInterceptor25.class)
   public Customer25() {
   }
 

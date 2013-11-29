@@ -38,14 +38,18 @@ public class CustomerService23 {
     return em.find(Customer23.class, id);
   }
 
+  //Why this "logMethod" could intercept the method of "createCustomer"???
+  //without the "@Interceptors"
   @AroundInvoke
   private Object logMethod(InvocationContext ic) throws Exception {
-    logger.entering(ic.getTarget().toString(), ic.getMethod().getName());
+      System.out.println("--->>>>>>>>>>>>>>>>>");
+//  it seems that the "logger.entering" and "logger.exiting" did noting???
+    logger.entering("--->>>"+ic.getTarget().toString(), ic.getMethod().getName());
     logger.severe(">>>" + ic.getTarget().toString() + " - " + ic.getMethod().getName());
     try {
       return ic.proceed();
     } finally {
-      logger.exiting(ic.getTarget().toString(), ic.getMethod().getName());
+      logger.exiting("--->>>"+ic.getTarget().toString(), ic.getMethod().getName());
       logger.severe("<<<" + ic.getTarget().toString() + " - " + ic.getMethod().getName());
     }
   }
