@@ -28,16 +28,25 @@ public class CustomerService27 {
   // =          Lifecycle methods         =
   // ======================================
 
+  public CustomerService27(){      
+      System.out.println("----------------------->>>Excute Constructor!");
+  }
+  
+  
+  //这个方法被拦截器的@PostConstruct方法拦截,
+  //这个@PostConstruct会让init()函数在构造函数执行后执行
   @PostConstruct
   public void init() {
     // ...
+      System.out.println("---------->>>init()");
   }
 
   // ======================================
   // =           Public Methods           =
   // ======================================
-
+//这个方法被拥有@AroundInvoke 的 profile()函数拦截
   public void createCustomer(Customer27 customer) {
+      System.out.println("---------->>>createCustomer()");
     em.persist(customer);
   }
 

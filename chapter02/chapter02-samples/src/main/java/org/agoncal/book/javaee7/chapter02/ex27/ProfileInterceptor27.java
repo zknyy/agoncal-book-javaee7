@@ -27,6 +27,7 @@ public class ProfileInterceptor27 {
   // =          Lifecycle methods         =
   // ======================================
 
+  //这个PostConstruct就是在其连接点类的构造器执行后调用
   @PostConstruct
   public void logMethod(InvocationContext ic) throws Exception {
     logger.fine(ic.getTarget().toString());
@@ -47,6 +48,7 @@ public class ProfileInterceptor27 {
   public Object profile(InvocationContext ic) throws Exception {
     long initTime = System.currentTimeMillis();
     try {
+        logger.severe("---=== start log ===---");
       return ic.proceed();
     } finally {
       long diffTime = System.currentTimeMillis() - initTime;

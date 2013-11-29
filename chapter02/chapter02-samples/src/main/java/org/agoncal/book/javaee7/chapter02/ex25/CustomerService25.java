@@ -26,6 +26,14 @@ public class CustomerService25 {
   // =           Public Methods           =
   // ======================================
 
+  //这个拦截器使用的是LoggingInterceptor25中的init构造器@AroundConstruct拦截
+  @Interceptors(LoggingInterceptor25.class)
+  public CustomerService25(){
+      System.out.println("---->>>Execute constructor!");
+  }
+  
+  
+  //这个拦截器使用的是LoggingInterceptor25中的logMethod方法调用@AroundInvoke拦截
   @Interceptors(LoggingInterceptor25.class)
   public void createCustomer(Customer25 customer) {
     em.persist(customer);

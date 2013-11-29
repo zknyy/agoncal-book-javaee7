@@ -43,7 +43,9 @@ public class CustomerService28IT {
 
   @Test
   public void shouldSeeInterceptor() throws Exception {
+      System.out.println("------>>>准备开始...实例化customerService");
     CustomerService28 customerService = container.instance().select(CustomerService28.class).get();
+      System.out.println("------>>>创建Customer");
     customerService.createCustomer(new Customer28());
   }
 }

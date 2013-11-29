@@ -44,8 +44,10 @@ public class CustomerService27IT {
   // ======================================
 
   @Test
-  public void shouldSeeInterceptor() throws Exception {
+  public void shouldSeeInterceptor() throws Exception {    
+      System.out.println("------------>>> Before get the service object!");
     CustomerService27 customerService = container.instance().select(CustomerService27.class).get();
+      System.out.println("------------>>> Before execute the create customer object~~~");
     customerService.createCustomer(new Customer27());
   }
 }

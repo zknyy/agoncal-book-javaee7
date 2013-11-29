@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
  *         --
  */
 @Transactional
-@Loggable33
+//@Loggable33
 public class CustomerService33 {
 
   // ======================================
@@ -26,12 +26,19 @@ public class CustomerService33 {
   // =           Public Methods           =
   // ======================================
 
+  //无论怎么调换这两个拦截器的位置和修改优先权,Loggable33总是会先执行???
   @Auditable33
+@Loggable33
   public void createCustomer(Customer33 customer) {
+        System.out.println("------------->>>begin createCustomer()");
     em.persist(customer);
+        System.out.println("------------->>>end   createCustomer()");
   }
 
   public Customer33 findCustomerById(Long id) {
-    return em.find(Customer33.class, id);
-  }
+        System.out.println("------------->>>begin findCustomerById()");
+        Customer33 temp = em.find(Customer33.class, id);
+        System.out.println("------------->>>end   findCustomerById()");
+        return temp;
+    }
 }
