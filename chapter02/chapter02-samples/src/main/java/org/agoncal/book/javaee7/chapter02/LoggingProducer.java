@@ -1,5 +1,6 @@
 package org.agoncal.book.javaee7.chapter02;
 
+import java.util.logging.Level;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 import java.util.logging.Logger;
@@ -15,6 +16,9 @@ public class LoggingProducer {
 
   @Produces
   private Logger createLogger(InjectionPoint injectionPoint) {
-    return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
+    //how the level of log work???
+    Logger log = Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
+    log.setLevel(Level.ALL);
+    return log;
   }
 }
