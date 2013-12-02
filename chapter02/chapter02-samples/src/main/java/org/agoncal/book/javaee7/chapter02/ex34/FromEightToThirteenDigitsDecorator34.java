@@ -20,6 +20,7 @@ public class FromEightToThirteenDigitsDecorator34 implements NumberGenerator34 {
   // ======================================
 
   @Inject
+  //注入需要被代理的对象
   @Delegate
   private NumberGenerator34 numberGenerator;
 
@@ -29,7 +30,7 @@ public class FromEightToThirteenDigitsDecorator34 implements NumberGenerator34 {
 
   public String generateNumber() {
     String issn = numberGenerator.generateNumber();
-    String isbn = "13-84356" + issn.substring(1);
+    String isbn = "13-84356|" + issn;//.substring(1);
     return isbn;
   }
 }

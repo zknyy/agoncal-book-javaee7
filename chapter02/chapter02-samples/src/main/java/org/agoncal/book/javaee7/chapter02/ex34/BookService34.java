@@ -16,6 +16,7 @@ public class BookService34 {
   // ======================================
 
   @Inject
+  //如果代理类没有在beans.xml文件中申明,则直接使用未经过代理的原始对象
   private NumberGenerator34 numberGenerator;
 
   // ======================================
