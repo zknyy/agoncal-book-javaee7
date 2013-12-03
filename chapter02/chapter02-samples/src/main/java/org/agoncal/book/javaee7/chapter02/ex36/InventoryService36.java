@@ -27,11 +27,13 @@ public class InventoryService36 {
   // =          Business methods          =
   // ======================================
 
+  //duiying to @Inject @Added
   public void addBook(@Observes @Added Book36 book) {
     logger.warning("#### Adding book " + book.getTitle() + " to inventory");
     inventory.add(book);
   }
 
+  //duiying to @Inject @Removed
   public void removeBook(@Observes @Removed Book36 book) {
     logger.warning("#### Removing book " + book.getTitle() + " to inventory");
     inventory.remove(book);

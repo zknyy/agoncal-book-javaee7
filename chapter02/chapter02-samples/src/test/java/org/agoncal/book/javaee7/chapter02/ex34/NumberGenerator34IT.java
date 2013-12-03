@@ -47,7 +47,16 @@ public class NumberGenerator34IT {
   public void shouldCheckNumberIsThirteenDigits() {
     BookService34 bookService = container.instance().select(BookService34.class).get();
     Book34 book = bookService.createBook("H2G2", 12.5f, "Geeky scifi Book");
-    System.out.println("### " + book.getIsbn());
+    System.out.println("shouldCheckNumberIsThirteenDigits### " + book.getIsbn());
     assertTrue(book.getIsbn().startsWith("13"));
+  }
+  
+  @Test
+  public void withoutContainer() {
+    BookService34 bookService = new BookService34();
+    bookService.numberGenerator = new IssnGenerator34();
+    Book34 book = bookService.createBook("H2G2", 12.5f, "Geeky scifi Book");
+    System.out.println("withoutContainer### " + book.getIsbn());
+    assertTrue(book.getIsbn().startsWith("8"));
   }
 }

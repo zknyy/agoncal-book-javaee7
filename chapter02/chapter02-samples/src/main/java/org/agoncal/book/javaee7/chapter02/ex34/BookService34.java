@@ -16,7 +16,7 @@ public class BookService34 {
   // ======================================
 
   @Inject
-  private NumberGenerator34 numberGenerator;
+  public NumberGenerator34 numberGenerator;
 
   // ======================================
   // =          Business methods          =

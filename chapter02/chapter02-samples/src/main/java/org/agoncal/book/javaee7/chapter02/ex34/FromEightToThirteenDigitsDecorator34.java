@@ -13,12 +13,16 @@ import javax.inject.Inject;
  *         --
  */
 @Decorator
-public class FromEightToThirteenDigitsDecorator34 implements NumberGenerator34 {
+//a decorator can be declared as an abstract class so that it does not have to 
+//implement all the business methods of the interfaces if there are many
+public abstract class FromEightToThirteenDigitsDecorator34 implements NumberGenerator34 {
 
   // ======================================
   // =             Attributes             =
   // ======================================
 
+  //Decorators must have a delegate injection point (annotated with @Delegate), 
+  //with the same type as the beans they decorate (here the NumberGenerator interface).
   @Inject
   @Delegate
   private NumberGenerator34 numberGenerator;

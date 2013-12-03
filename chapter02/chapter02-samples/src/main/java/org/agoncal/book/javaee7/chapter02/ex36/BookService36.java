@@ -20,9 +20,11 @@ public class BookService36 {
   private NumberGenerator36 numberGenerator;
 
   @Inject @Added
+  //duiyin to @Observes @Added
   private Event<Book36> bookAddedEvent;
 
   @Inject @Removed
+  //duiyin to @Observes @Removed
   private Event<Book36> bookRemovedEvent;
 
   // ======================================
