@@ -55,11 +55,11 @@ public class DerbyPingService19IT {
     Connection conn = DriverManager.getConnection("jdbc:derby:memory:chapter02DB;create=true", "APP2", "APP");
     System.out.println("--->>> step c");
 //    conn.createStatement().executeQuery("SELECT 1 FROM SYSIBM.SYSDUMMY1");
-    ResultSet rs = conn.createStatement().executeQuery("SELECT 1 FROM SYSIBM.SYSDUMMY1");
+    ResultSet rs = conn.createStatement().executeQuery("SELECT IBMREQD FROM SYSIBM.SYSDUMMY1");
     System.out.println("--->>> step d");
     rs.next();
     System.out.println("--->>> step e");
-    System.out.println("--->>> SELECT 1 FROM SYSIBM.SYSDUMMY1:"+rs.getString(1));
+    System.out.println("--->>> SELECT IBMREQD FROM SYSIBM.SYSDUMMY1:"+rs.getString(1));
     conn.close();
   }
 

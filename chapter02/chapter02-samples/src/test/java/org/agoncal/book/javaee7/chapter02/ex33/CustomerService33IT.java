@@ -13,7 +13,7 @@ import org.junit.Test;
  *         http://www.antoniogoncalves.org
  *         --
  */
-public class CustomerService31IT {
+public class CustomerService33IT {
 
   // ======================================
   // =             Attributes             =

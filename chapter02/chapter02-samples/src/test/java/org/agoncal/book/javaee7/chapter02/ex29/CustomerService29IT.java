@@ -42,8 +42,11 @@ public class CustomerService29IT {
   // ======================================
 
   @Test
-  public void shouldSeeInterceptor() throws Exception {
+  public void shouldSeeInterceptor() throws Exception {      
+        System.out.println("-------->>>开始初始化customerService");
     CustomerService29 customerService = container.instance().select(CustomerService29.class).get();
+        System.out.println("-------->>>准备创建customer");
     customerService.createCustomer(new Customer29());
+        System.out.println("-------->>>结束");
   }
 }

@@ -34,11 +34,13 @@ public class AuditInterceptor33 {
   public Object profile(InvocationContext ic) throws Exception {
     long initTime = System.currentTimeMillis();
     try {
+        logger.severe("#####################################");
       return ic.proceed();
     } finally {
       long diffTime = System.currentTimeMillis() - initTime;
       logger.severe("###" + ic.getMethod() + " took " + diffTime + " millis");
-      logger.fine(ic.getMethod() + " took " + diffTime + " millis");
+      logger.fine(ic.getMethod() + " took " + diffTime + " millis");      
+        logger.severe("#####################################");
     }
   }
 }

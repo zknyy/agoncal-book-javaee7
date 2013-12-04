@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
  *         --
  */
 @Transactional
-@Loggable33
+//@Loggable33
 public class CustomerService33 {
 
   // ======================================
@@ -26,12 +26,20 @@ public class CustomerService33 {
   // =           Public Methods           =
   // ======================================
 
+  //无论怎么调换这两个拦截器的位置和修改优先权,都是无济于事
+  //关键在于beans.xml文件中拦截器申明的顺序
   @Auditable33
+  @Loggable33
   public void createCustomer(Customer33 customer) {
+        System.out.println("------------->>>begin createCustomer()");
     em.persist(customer);
+        System.out.println("------------->>>end   createCustomer()");
   }
 
   public Customer33 findCustomerById(Long id) {
-    return em.find(Customer33.class, id);
-  }
+        System.out.println("------------->>>begin findCustomerById()");
+        Customer33 temp = em.find(Customer33.class, id);
+        System.out.println("------------->>>end   findCustomerById()");
+        return temp;
+    }
 }

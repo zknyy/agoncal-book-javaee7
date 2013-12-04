@@ -24,6 +24,7 @@ public abstract class FromEightToThirteenDigitsDecorator34 implements NumberGene
   //Decorators must have a delegate injection point (annotated with @Delegate), 
   //with the same type as the beans they decorate (here the NumberGenerator interface).
   @Inject
+  //注入需要被代理的对象
   @Delegate
   private NumberGenerator34 numberGenerator;
 
@@ -33,7 +34,7 @@ public abstract class FromEightToThirteenDigitsDecorator34 implements NumberGene
 
   public String generateNumber() {
     String issn = numberGenerator.generateNumber();
-    String isbn = "13-84356" + issn.substring(1);
+    String isbn = "13-84356|" + issn;//.substring(1);
     return isbn;
   }
 }

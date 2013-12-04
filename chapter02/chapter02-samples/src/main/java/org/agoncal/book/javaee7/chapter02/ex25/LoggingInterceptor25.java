@@ -27,7 +27,7 @@ public class LoggingInterceptor25 {
   // ======================================
 
   @AroundConstruct
-  private void init(InvocationContext ic) throws Exception {
+  private void init(InvocationContext ic) throws Exception {  
     logger.fine("Entering constructor");
     logger.severe("Entering constructor");
     try {

@@ -24,13 +24,19 @@ public class CustomerService28 {
   @Inject
   private EntityManager em;
 
-  // ======================================
-  // =          Lifecycle methods         =
-  // ======================================
-
+    // ======================================
+    // =          Lifecycle methods         =
+    // ======================================
+  
+    public CustomerService28() {        
+      System.out.println("------------>>> 执行构造函数...");
+    }
+  
+  //只要是申明了@PostConstruct,无论是否有拦截器,此方法都会在构造器完成后执行
   @PostConstruct
   public void init() {
     // ...
+      System.out.println("------------>>> @PostConstruct init()");
   }
 
   // ======================================
@@ -38,6 +44,7 @@ public class CustomerService28 {
   // ======================================
 
   public void createCustomer(Customer28 customer) {
+      System.out.println("------------>>> 创建customer对象...");
     em.persist(customer);
   }
 

@@ -26,10 +26,12 @@ public class CustomerService29 {
   // ======================================
   // =           Public Methods           =
   // ======================================
-
-  public void createCustomer(Customer29 customer) {
-    em.persist(customer);
-  }
+  
+    public void createCustomer(Customer29 customer) {
+        System.out.println("-------->>>创建customer");
+        em.persist(customer);
+        System.out.println("-------->>>完成创建customer");
+    }
 
   public Customer29 findCustomerById(Long id) {
     return em.find(Customer29.class, id);
