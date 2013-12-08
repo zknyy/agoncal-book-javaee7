@@ -1,7 +1,7 @@
-1
-2
-3
-4
+1 (otherTest) confilct to master
+2 (otherTest) confilct to master
+3 (otherTest) confilct to master
+4 (otherTest) does not update to the new master
 5
 6
 7
