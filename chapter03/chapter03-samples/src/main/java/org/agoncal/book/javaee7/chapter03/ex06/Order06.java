@@ -27,7 +27,7 @@ public class Order06 {
   private Date creationDate;
   @NotNull
   @Min(1)
-  private Double totalAmount;
+  private double totalAmount;//在使用校验时用double和Double是一样的
   private Date paymentDate;
   private Date deliveryDate;
   private List<OrderLine06> orderLines;
@@ -48,6 +48,7 @@ public class Order06 {
   // ======================================
 
   @NotNull
+  //这里定义了一个@GreaterThanZero,但是没有实现其校验类,也从来没有调用过这个方法???
   public Double calculateTotalAmount(@GreaterThanZero Double changeRate) {
     return 1d;
   }
