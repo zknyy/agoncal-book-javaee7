@@ -17,8 +17,13 @@ public class ZipCodeValidator implements ConstraintValidator<ZipCode, String> {
 
   @Inject
   @USA
-  private ZipCodeChecker checker = new ZipCodeChecker();
+  //问题：03 Bean Validation(All)中，ZipCodeValidator.checker无法注入???
+  private ZipCodeChecker checker;
   private Pattern zipPattern = Pattern.compile("\\d{5}(-\\d{5})?");
+
+    public ZipCodeValidator() {
+//        this.checker = new ZipCodeChecker();
+    }
 
   @Override
   public void initialize(ZipCode zipCode) {
@@ -30,8 +35,8 @@ public class ZipCodeValidator implements ConstraintValidator<ZipCode, String> {
       return true;
 
     Matcher m = zipPattern.matcher(value);
-    if (!m.matches())
-      return false;
+//    if (!m.matches())
+//      return false;
     return checker.isZipCodeValid(value);
   }
 }
