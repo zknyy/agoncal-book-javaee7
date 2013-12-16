@@ -94,8 +94,10 @@ public class Order06Test {
 
   private void displayContraintViolations(Set<ConstraintViolation<Order06>> constraintViolations) {
     for (ConstraintViolation constraintViolation : constraintViolations) {
-      System.out.println("### " + constraintViolation.getRootBeanClass().getSimpleName() +
-              "." + constraintViolation.getPropertyPath() + " - Invalid Value = " + constraintViolation.getInvalidValue() + " - Error Msg = " + constraintViolation.getMessage());
+      System.out.println("### " + constraintViolation.getRootBeanClass().getName() 
+              +" | " + constraintViolation.getPropertyPath() 
+              +" | Invalid Value = " + constraintViolation.getInvalidValue() 
+              +" | Error Msg = " + constraintViolation.getMessage());
 
     }
   }
