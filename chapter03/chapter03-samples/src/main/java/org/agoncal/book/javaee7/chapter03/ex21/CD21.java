@@ -1,6 +1,7 @@
 package org.agoncal.book.javaee7.chapter03.ex21;
 
 import javax.validation.constraints.*;
+import javax.validation.groups.Default;
 
 /**
  * @author Antonio Goncalves
@@ -16,7 +17,7 @@ public class CD21 {
   // ======================================
 
   @NotNull
-  @Size(min = 4, max = 50)
+  @Size(min = 4, max = 50, groups=Default.class)//groups=Default.class could be omiited
   private String title;
   @NotNull
   private Float price;
