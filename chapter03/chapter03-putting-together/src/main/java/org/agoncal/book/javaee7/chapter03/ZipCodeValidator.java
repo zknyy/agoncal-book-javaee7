@@ -17,6 +17,7 @@ public class ZipCodeValidator implements ConstraintValidator<ZipCode, String> {
 
   @Inject
   @USA
+  //这里的问题USA无法注入的问题无法解决
   //问题：03 Bean Validation(All)中，ZipCodeValidator.checker无法注入???
   private ZipCodeChecker checker;
   private Pattern zipPattern = Pattern.compile("\\d{5}(-\\d{5})?");

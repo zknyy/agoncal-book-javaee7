@@ -26,20 +26,20 @@ public class AddressIT {
   // =              Methods               =
   // ======================================
 
-  @Test
-  public void shouldRaiseConstraintViolationCauseInvalidZipCode() {
-
-    ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
-    Validator validator = vf.getValidator();
-
-    Address address = new Address("233 Spring Street", "New York", "NY", "DummyZip", "USA");
-
-    Set<ConstraintViolation<Address>> violations = validator.validate(address);
-    assertEquals(1, violations.size());
-
-    vf.close();
-  }
-  /*
+//  @Test
+//  public void shouldRaiseConstraintViolationCauseInvalidZipCode() {
+//
+//    ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
+//    Validator validator = vf.getValidator();
+//
+//    Address address = new Address("233 Spring Street", "New York", "NY", "DummyZip", "USA");
+//
+//    Set<ConstraintViolation<Address>> violations = validator.validate(address);
+//    assertEquals(1, violations.size());
+//
+//    vf.close();
+//  }
+  
   @Test
   public void shouldRaiseConstraintViolationCauseInvalidZipCode() {
 
@@ -69,5 +69,5 @@ public class AddressIT {
 
     vf.close();
   }
-  */
+  
 }
