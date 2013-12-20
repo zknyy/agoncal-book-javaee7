@@ -63,6 +63,31 @@ public interface Constants {
      * @Entity的Customer32类用@Access(AccessType.FIELD)修饰
      * @Embeddable的Address32类用@Access(AccessType.PROPERTY)修饰
      * 
+34[34] Customer34和Address34数据库中主从表的关系，在类层面可以定义1:1[简单]
+
+39[39] [推荐使用]Customer39和Address39数据库中主从表的关系，在类层面可以定义1:1关系
+  @OneToOne(fetch = FetchType.LAZY)//1:1关系,惰性载入
+  @JoinColumn(name = "add_fk", nullable = false)// 定义外键列名
+
+40[40] 含混类1:N(数据库中为N:M)关系,[2个类—3个表], Order40和OrderLine40之间类1:N(数据库中为N:M)关系,通过自动生成的连接表EX40_ORDER_EX40_ORDER_LINE来实现
+
+43[43] 含混类1:N(数据库中为N:M)关系,[2个类—3个表], 通过定义的连接表ex43_jnd_ord_line和外键列名order_fk, order_line_fk来实现
+@OneToMany//1:N关系
+@JoinTable(name = "ex43_jnd_ord_line", joinColumns = @JoinColumn(name = "order_fk"), inverseJoinColumns = @JoinColumn(name = "order_line_fk"))//定义的连接表及其两个外键列名order_fk, order_line_fk
+  
+45[45] [推荐使用] 1:N(数据库中为1:N)关系, 通过定义从表外键列名order_fk来实现
+  @OneToMany(fetch = FetchType.EAGER)
+  @JoinColumn(name = "order_fk")
+  private List<OrderLine45> orderLines;
+
+
+46[46] [推荐使用] M:N(数据库中为M:N)关系, 通过定义的连接表ex46_jnd_art_cd和外键列名artist_fk, cd_fk来实现, 2个类中都有对方的List
+@ManyToMany
+@JoinTable(name = "ex46_jnd_art_cd", joinColumns = @JoinColumn(name = "artist_fk"), inverseJoinColumns = @JoinColumn(name = "cd_fk"))
+private List<CD46> appearsOnCDs;
+
+49[49]…
+
      */
   // ======================================
   // =             Constants              =
