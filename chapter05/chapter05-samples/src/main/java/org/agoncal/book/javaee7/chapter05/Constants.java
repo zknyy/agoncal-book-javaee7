@@ -63,8 +63,66 @@ public interface Constants {
      * @Entity的Customer32类用@Access(AccessType.FIELD)修饰
      * @Embeddable的Address32类用@Access(AccessType.PROPERTY)修饰
      * 
+     * 34[34] Customer34和Address34数据库中主从表的关系，在类层面可以定义1:1[单向unidirectional], 1:1可以nullable,so1:0 或1:1
+     * 
+     * 39[39] [推荐使用]Customer39和Address39数据库中主从表的关系，在类层面可以定义1:1关系
+     * @OneToOne(fetch = FetchType.LAZY)//1:1关系,惰性载入
+     * @JoinColumn(name = "add_fk", nullable = false)// 定义外键列名, 不能为空,必须1:1
+     * 
+     * 40[40] 含混类[无@OneToMany 单向]1:N(数据库中为N:M)关系,[2个类—3个表], Order40和OrderLine40之间类1:N(数据库中为N:M)关系,通过自动生成的连接表EX40_ORDER_EX40_ORDER_LINE来实现
+     * 
+     * 43[43] 含混类[有@OneToMany 单向]1:N(数据库中为N:M)关系,[2个类—3个表], 通过定义的连接表ex43_jnd_ord_line和外键列名order_fk, order_line_fk来实现
+     * @OneToMany//1:N关系
+     * @JoinTable(name = "ex43_jnd_ord_line", joinColumns = @JoinColumn(name = "order_fk"), inverseJoinColumns = @JoinColumn(name = "order_line_fk"))//定义的连接表及其两个外键列名order_fk, order_line_fk
+     * 
+     * 45[45] [推荐使用] 1:N(数据库中为1:N)关系, 通过定义从表外键列名order_fk来实现
+     * @OneToMany(fetch = FetchType.EAGER)
+     * @JoinColumn(name = "order_fk")
+     * private List<OrderLine45> orderLines;
+     * 
+     * -----------------------------------------------------------------------
+     * 拥有者owner [使用@ManyToMany], 
+     * 被拥有者reverse owner [使用@ManyToMany(mappedBy = "appearsOnCDs")] 
+     * 
+     * 注意:无论是1:1还是M:N的双向关系,都可以做为拥有或被拥有者,
+     * 但另外一边必须用mappedBy,否则会认为两边都是拥有者,结果是４个表
+     * 
+     * FetchType:
+     * Annotation 	Default Fetching Strategy
+     * @OneToOne 	EAGER
+     * @ManyToOne 	EAGER
+     * @OneToMany 	LAZY
+     * @ManyToMany 	LAZY
+     * ----------------------------------------------------------------------
+     * 
+     * 46[46] [推荐使用] M:N(数据库中为M:N)关系, 通过定义的连接表ex46_jnd_art_cd和外键列名artist_fk, cd_fk来实现, 2个类中都有对方的List
+     * class Artist46中:
+     * @ManyToMany
+     * @JoinTable(name = "ex46_jnd_art_cd", joinColumns = @JoinColumn(name = "artist_fk"), inverseJoinColumns = @JoinColumn(name = "cd_fk"))
+     * private List<CD46> appearsOnCDs;
+     * 
+     * class CD46中:
+     * @ManyToMany(mappedBy = "appearsOnCDs")
+     * private List<Artist46> createdByArtists;
+     * 
+     * ----------------------------------------------------------------------
+     * 49[49] 排序
+     * @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+     * @OrderBy("postedDate DESC") //以postedDate字段递减
+     * private List<Comment49> comments;
+     * 
+     * -------------------------------------------
+     * 如果数据库不能自动优化其索引结构, 则@OrderColumn 和 @OrderBy是必须有其一的
+     * 51[51] [有序列@OrderColumn] 有序列是由主表强加于关联表的..........
+     * @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)//自动生成表EX51_NEWS_EX51_COMMENT
+     * @OrderColumn(name = "publication_index")//有序列是由主表强加于关联表的
+     * private List<Comment51> comments;
+     * 
+     * 
+     * 
+     * 
      */
-  // ======================================
+    // ======================================
   // =             Constants              =
   // ======================================
 
