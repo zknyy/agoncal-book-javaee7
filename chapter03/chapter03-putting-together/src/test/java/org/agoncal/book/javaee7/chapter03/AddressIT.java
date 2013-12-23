@@ -26,6 +26,9 @@ public class AddressIT {
   // =              Methods               =
   // ======================================
 
+    /**
+     * 问题在于，在JUnit的TestCase里面如何注入:
+     * 下面的是原始代码,依然有错误
   @Test
   public void shouldRaiseConstraintViolationCauseInvalidZipCode() {
 
@@ -39,6 +42,7 @@ public class AddressIT {
 
     vf.close();
   }
+  * */
   /*
   @Test
   public void shouldRaiseConstraintViolationCauseInvalidZipCode() {

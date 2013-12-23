@@ -1,5 +1,6 @@
 package org.agoncal.book.javaee7.chapter06.ex03;
 
+import javax.persistence.FlushModeType;
 import org.agoncal.book.javaee7.chapter06.AbstractPersistentTest;
 import org.junit.Test;
 
@@ -22,19 +23,26 @@ public class Customer03IT extends AbstractPersistentTest {
   public void shouldPersistACustomerWithOneAddressSet() throws Exception {
 
     Customer03 customer = new Customer03("Antony", "Balla", "tballa@mail.com");
-    Address03 address = new Address03("Ritherdon Rd", "London", "8QE", "UK");
+    Address03 address = new Address03("-->>Ritherdon Rd", "London", "8QE", "UK");
     customer.setAddress(address);
 
+    em.setFlushMode(FlushModeType.AUTO);
     // Persist the object
     tx.begin();
     em.persist(customer);
-    em.persist(address);
+    //em.persist(address);
+    address.setCity("11111----");
     tx.commit();
 
+      assertNull("找不到实体id=5", em.find(Customer03.class, 5l));
+      //如果没有引用则产生异常EntityNotFoundException
+//      assertNull("找不到实体引用id=5", em.getReference(Customer03.class, 5l));
+      
+    assertTrue(em.contains(address));//当持久化某个实体时,其引用实体也会自动持久化
     assertNotNull(customer.getId());
     assertNotNull(address.getId());
   }
-
+/*
   @Test // Listing 4-10
   public void shouldFindACustomer() throws Exception {
 
@@ -328,5 +336,5 @@ public class Customer03IT extends AbstractPersistentTest {
     tx.commit();
 
     assertNotNull(address.getId());
-  }
+  }*/
 }
