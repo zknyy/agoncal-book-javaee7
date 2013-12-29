@@ -34,6 +34,7 @@ public class BookEJB01IT {
 
   @BeforeClass
   public static void initContainer() throws Exception {
+    System.out.println("---------Step 0---------");
     Map<String, Object> properties = new HashMap<>();
     properties.put(EJBContainer.MODULES, new File("target/classes"));
     ec = EJBContainer.createEJBContainer(properties);
@@ -42,6 +43,7 @@ public class BookEJB01IT {
 
   @AfterClass
   public static void closeContainer() throws Exception {
+    System.out.println("---------Step End---------");
     if (ctx != null)
       ctx.close();
     if (ec != null)
@@ -55,6 +57,7 @@ public class BookEJB01IT {
   @Test
   public void shouldCreateABook() throws Exception {
 
+    System.out.println("---------Step 1---------");
     // Creates an instance of book
     Book01 book = new Book01();
     book.setTitle("The Hitchhiker's Guide to the Galaxy");
@@ -64,19 +67,24 @@ public class BookEJB01IT {
     book.setNbOfPage(354);
     book.setIllustrations(false);
 
+    System.out.println("---------Step 2---------");
     // Check JNDI dependencies
 //    assertNotNull(ctx.lookup("java:global/jdbc/__default"));
 //    assertNotNull(ctx.lookup("java:comp/env/org.agoncal.book.javaee7.chapter07.ex01.BookEJB01/ds"));
     assertNotNull(ctx.lookup("java:global/classes/BookEJB01!org.agoncal.book.javaee7.chapter07.ex01.BookEJB01"));
+    System.out.println("---------Step 3---------");
     assertNotNull(ctx.lookup("java:global/classes/BookEJB01"));
 
+    System.out.println("---------Step 4---------");
     // Looks up the EJB
     BookEJB01 bookEJB = (BookEJB01) ctx.lookup("java:global/classes/BookEJB01!org.agoncal.book.javaee7.chapter07.ex01.BookEJB01");
 
+    System.out.println("---------Step 5---------");
     // Persists the book to the database
     book = bookEJB.createBook(book);
     assertNotNull("ID should not be null", book.getId());
 
+    System.out.println("---------Step 6---------");
     // Retrieves all the books from the database
     assertNotNull(bookEJB.findBooks());
   }
