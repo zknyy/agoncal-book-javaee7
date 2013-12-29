@@ -63,8 +63,19 @@
     <class>org.agoncal.book.javaee7.chapter05.ex66.Item66</class>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+      <property name="javax.persistence.schema-generation.scripts.action" value="drop-and-create"/>
+      <!-- 这两个文件为什么会在项目根目录[应该是由于mvn在项目根目录运行]==自动生成 -->
+      <property name="javax.persistence.schema-generation.scripts.create-target" value="chapter05Create.ddl"/>
+      <property name="javax.persistence.schema-generation.scripts.drop-target" value="chapter05Drop.ddl"/>
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/chapter05DB;create=true"/>
+      <property name="javax.persistence.jdbc.user" value="APP"/>
+      <property name="javax.persistence.jdbc.password" value="APP"/>
+      <!-- 
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:chapter05DB;create=true"/>
+      -->
       <property name="eclipselink.logging.level" value="INFO"/>
     </properties>
   </persistence-unit>
